@@ -1,0 +1,26 @@
+#container-card{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#container-card .card-footer a:hover{
+    cursor: pointer;
+    color: red;
+}
+
+#VisitContainer{
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+#VisitImg{
+    margin-top:2%;
+}
+
+#NewVisitForm{
+    margin-top: 5%;
+}
+
+#ContainerLogin{
+    text-align: center;
+}

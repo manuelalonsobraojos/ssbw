@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+  {% block includes%}
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+  {% endblock %}
+
+  {% block content %}
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-xs-12">
+        <img class="card-img-top" src="/media/{{ visit.foto }}" alt="">
+      </div>
+    </div>
+
+  <div class="row">
+      <div class="col-lg-12 col-md-12 col-xs-12">
+        <h1 class="my-4">Descripción</h1>
+        <p>{{visit.descripcion}}</p>
+      </div>
+  </div>
+
+  <div class="row">
+      <div class="col-lg-12 col-md-12 col-xs-12">
+        <h1 class="my-4">Comentarios</h1>
+        <ul>
+          {% for coment in coments %}
+            <li>{{coment.texto}}</li>
+          {% endfor %}
+        </ul>
+      </div>
+  </div>
+  {% endblock %}
