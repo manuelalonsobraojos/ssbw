@@ -24,3 +24,7 @@
 #ContainerLogin{
     text-align: center;
 }
+
+.ButtonIncrementLikes, .ButtonDecrementLikes{
+    cursor: pointer;
+}

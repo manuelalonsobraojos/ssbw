@@ -16,6 +16,8 @@ urlpatterns = [
     path('edit_visit_form/<int:visit_id>', views.editVisitView, name='editVisitView'),
     path('edit_visit/<int:visit_id>', views.editVisit, name='editVisit'),
     path('delete_visit/<int:visit_id>', views.deleteVisit, name='deleteVisit'),
+    path('increment_likes', views.incrementLikes, name='incrementLikes'),
+    path('decrement_likes', views.decrementLikes, name='decrementLikes'),
     path('apivisitas/', include(router_visit.urls)),
     path('apivisitas/', include(router_comment.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))

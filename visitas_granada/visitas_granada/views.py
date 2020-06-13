@@ -4,6 +4,7 @@ from rest_framework import viewsets
 from .serializers import ComentarioSerializer, VisitaSerializer
 from visitas_granada.models import Visita, Comentario, VisitaForm
 from django.contrib.auth.decorators import login_required
+from django.http import JsonResponse
 import os
 
 def index(request):
@@ -73,6 +74,31 @@ def deleteVisit(request, visit_id):
     visit = Visita.objects.get(pk=visit_id)
     visit.delete()
     return redirect('index')
+
+def incrementLikes(request):
+    id_visit = request.POST.get('id')
+    print(id_visit)
+    visit = Visita.objects.get(id=id_visit)
+    likes = visit.likes + 1
+    visit.likes = likes
+    visit.save()
+    data ={
+        'likes': visit.likes
+    }
+
+    return JsonResponse(data)
+
+def decrementLikes(request):
+    id_visit = request.POST.get('id')
+    visit = Visita.objects.get(id=id_visit)
+    likes = visit.likes - 1
+    visit.likes = likes
+    visit.save()
+    data ={
+        'likes': visit.likes
+    }
+
+    return JsonResponse(data)
 
 class VisitaViewSet(viewsets.ModelViewSet):
     queryset = Visita.objects.all().order_by('id')

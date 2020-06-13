@@ -63,7 +63,11 @@
                   <h4 class="card-title">
                     <a href="{% url  'getVisit' visit.id %}">{{visit.nombre}}</a>
                   </h4>
-                  <h5>Likes {{visit.likes}}</h5>
+                  <h5>
+                    <label id="NumberLikes-{{visit.id}}">{{visit.likes}}</label> Likes
+                    <a class="ButtonIncrementLikes" data-id-visit="{{visit.id}}"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></a>
+                    <a class="ButtonDecrementLikes" data-id-visit="{{visit.id}}"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></a>
+                  </h5>
                   <p class="card-text">{{visit.descripcion}}</p>
                 </div>
               </div>
@@ -71,8 +75,8 @@
                   <div class="col-lg-12 col-md-12 col-xs-12">
                     <div class="card-footer">
     <!--                  <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>-->
-                        <a href="{% url  'editVisitView' visit.id %}"><i class="fa fa-edit"></i></a>
-                        <a href="{% url  'deleteVisit' visit.id %}"><i class="fa fa-trash"></i></a>
+                        <a href="{% url  'editVisitView' visit.id %}"><i class="fa fa-edit" data-toggle="tooltip" data-placement="top" title="Editar"></i></a>
+                        <a href="{% url  'deleteVisit' visit.id %}"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="Eliminar"></i></a>
                     </div>
                   </div>
               {% endif %}
