@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
-from django.template.loader  import get_template
+from django.template.loader import get_template
+from rest_framework import viewsets
+from .serializers import ComentarioSerializer, VisitaSerializer
 from visitas_granada.models import Visita, Comentario, VisitaForm
 from django.contrib.auth.decorators import login_required
 import os
@@ -71,3 +73,11 @@ def deleteVisit(request, visit_id):
     visit = Visita.objects.get(pk=visit_id)
     visit.delete()
     return redirect('index')
+
+class VisitaViewSet(viewsets.ModelViewSet):
+    queryset = Visita.objects.all().order_by('id')
+    serializer_class = VisitaSerializer
+
+class ComentarioViewSet(viewsets.ModelViewSet):
+    queryset = Comentario.objects.all().order_by('id')
+    serializer_class = ComentarioSerializer
