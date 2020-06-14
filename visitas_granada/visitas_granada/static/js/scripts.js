@@ -11,6 +11,10 @@ $(document).ready(function(){
     groupClickDecrementLikes(id_visit)
   });
 
+  $( "#LighMode" ).click(function() {
+    cambiarModo();
+  });
+
 });
 
 /**
@@ -57,4 +61,9 @@ function getCookie(name) {
         }
     }
     return cookieValue;
+}
+
+function cambiarModo() {
+    var cuerpoweb = document.body;
+    cuerpoweb.classList.toggle("oscuro");
 }
