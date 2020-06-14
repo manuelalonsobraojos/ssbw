@@ -13,6 +13,10 @@
     margin-bottom: 2%;
 }
 
+#ContainerImgVisit{
+    margin-top: 2%;
+}
+
 #VisitImg{
     margin-top:2%;
 }
@@ -36,4 +40,17 @@
 .oscuro{
     background-color: #1f1f1f;
     color: #f1eded;
+}
+
+/* Estilo mapa*/
+#mapid {
+   width: 100%;
+   height: 450px;
+   margin-top: 5%;
+   margin-bottom: 5%;
+}
+
+.leaflet-container {  /* all maps */
+        width:  600px;
+        height: 400px;
 }

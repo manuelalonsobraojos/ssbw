@@ -7,7 +7,7 @@
 
   {% block content %}
     <div class="row">
-      <div class="col-lg-12 col-md-12 col-xs-12">
+      <div id="ContainerImgVisit" class="col-lg-12 col-md-12 col-xs-12">
         <img class="card-img-top" src="/media/{{ visit.foto }}" alt="">
       </div>
     </div>
@@ -29,4 +29,22 @@
         </ul>
       </div>
   </div>
+
+  <div class="row">
+      <div class="col-lg-12 col-md-12 col-xs-12">
+        <div id="mapid"></div>
+      </div>
+  </div>
+
+  <script>
+    var map = L.map('mapid', {
+            center: [51.505, -0.09],
+            zoom: 3
+        });
+  </script>
+  {% endblock %}
+
+  {% block bottom-js %}
+    {{ block.super }}
+    <script src="{% static 'js/map.js' %}"></script>
   {% endblock %}
