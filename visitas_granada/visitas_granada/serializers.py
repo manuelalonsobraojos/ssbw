@@ -6,9 +6,14 @@ from .models import Visita, Comentario
 class VisitaSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Visita
-        fields = ('nombre', 'descripcion', 'likes', 'foto')
+        fields = ('id', 'nombre', 'descripcion', 'likes', 'foto')
 
 class ComentarioSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Comentario
-        fields = ('visita', 'texto')
+        fields = ('id', 'visita', 'texto')
+
+class VisitaLikesSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Visita
+        fields = ('id', 'likes')

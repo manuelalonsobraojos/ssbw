@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.template.loader import get_template
 from rest_framework import viewsets
-from .serializers import ComentarioSerializer, VisitaSerializer
+from .serializers import ComentarioSerializer, VisitaSerializer, VisitaLikesSerializer
 from visitas_granada.models import Visita, Comentario, VisitaForm
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
@@ -103,6 +103,10 @@ def decrementLikes(request):
 class VisitaViewSet(viewsets.ModelViewSet):
     queryset = Visita.objects.all().order_by('id')
     serializer_class = VisitaSerializer
+
+class VisitaLikesViewSet(viewsets.ModelViewSet):
+    queryset = Visita.objects.all().order_by('id')
+    serializer_class = VisitaLikesSerializer
 
 class ComentarioViewSet(viewsets.ModelViewSet):
     queryset = Comentario.objects.all().order_by('id')
