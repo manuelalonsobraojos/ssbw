@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.template.loader import get_template
+from django.template.loader import get_template, render_to_string
 from rest_framework import viewsets
 from .serializers import ComentarioSerializer, VisitaSerializer, VisitaLikesSerializer
 from visitas_granada.models import Visita, Comentario, VisitaForm
@@ -96,6 +96,22 @@ def decrementLikes(request):
     visit.save()
     data ={
         'likes': visit.likes
+    }
+
+    return JsonResponse(data)
+
+def registerComment(request):
+    id_visit = request.POST.get('id')
+    visit = Visita.objects.get(id=id_visit)
+    comment = request.POST.get('comment')
+    new_comment = Comentario()
+    new_comment.texto = comment
+    new_comment.visita = visit
+    new_comment.save()
+    comments = Comentario.objects.filter(visita=id_visit)
+    html = render_to_string('list_comments.html', {'comments': comments})
+    data ={
+        'html': html
     }
 
     return JsonResponse(data)

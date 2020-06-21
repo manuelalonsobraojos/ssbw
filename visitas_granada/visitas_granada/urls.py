@@ -21,6 +21,7 @@ urlpatterns = [
     path('delete_visit/<int:visit_id>', views.deleteVisit, name='deleteVisit'),
     path('increment_likes', views.incrementLikes, name='incrementLikes'),
     path('decrement_likes', views.decrementLikes, name='decrementLikes'),
+    path('register_comment', views.registerComment, name='registerComment'),
     path('api/', include(router_visit.urls)),
     path('api/', include(router_visit_like.urls)),
     path('api/', include(router_comment.urls)),

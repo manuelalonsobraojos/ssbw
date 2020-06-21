@@ -15,7 +15,26 @@ $(document).ready(function(){
     cambiarModo();
   });
 
+  $( "#ButtonComment" ).click(function() {
+    id_visit = $(this).attr('data-id-visit');
+    formComment(id_visit)
+  });
+
 });
+
+function formComment(id){
+    var csrftoken = getCookie('csrftoken');
+    $.ajax({
+        type: "POST",
+        url: url_register_comment,
+        data: {'id': id, 'comment': $('#comment').val(), 'csrfmiddlewaretoken': csrftoken,},
+        success: function (data) {
+            $('#ListComments').html(data.html);
+            $('#comment').val("");
+        }
+    });
+}
+
 
 /**
  * Método en el que se incrementa el numero de likes
